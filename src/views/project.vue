@@ -1,0 +1,149 @@
+<template>
+  <basic-container>
+    <avue-crud
+        :page.sync="page"
+        :data="tableData"
+        :table-loading="tableLoading"
+        :option="tableOption"
+        @on-load="getList"
+        @search-change="searchChange"
+        @search-reset="searchReset"
+        @refresh-change="refreshChange"
+        @size-change="sizeChange"
+        @current-change="currentChange"
+        @row-update="handleUpdate"
+        @row-save="handleSave"
+        @row-del="handleDel"
+    >
+    </avue-crud>
+  </basic-container>
+
+  <div  class="table-container">
+
+    <el-table ref="userTable" :header-cell-style="{ background: '#F2F6FC', color: '#131414' }" :data="dataList" border max-height="500">
+      <el-table-column label="标识ID" type="index" width="100" align="center" />
+      <el-table-column v-for="item in titleList" :key="item.value" :label="item.label" :prop="item.value" />
+    </el-table>
+
+    <table>
+<!--      <tr v-for="item in staticData" :key="item.id">-->
+<!--        <td>{{ item.name }}</td>-->
+<!--        <td>{{ item.age }}</td>-->
+<!--      </tr>-->
+    </table>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    2.4+2.4+2.2+1.9+1.9
+    2.6+2.6+2.4+2.1+2.1
+    2.8+2.8+2.6+2.3+2.3
+    3.0+3.0+2.6+2.3+2.3
+    3.2+3.2+2.8+2.5+2.5
+    24-12=12
+    return {
+      //数据List
+      dataList: [{project_abbreviation: '张三', owner: 20,  salesman: '男', project_full_name: '男', city: '男', exhibition_start_date: '男', exhibition_end_date: '男'
+        , contract_amount: '男', unpaid_amount: '男', received_amount: '男', company: '男', booth_area1r: '男', contract_amount1: '男', orders_number: '男', orders_number1: '男'
+        , total_cost: '男', gross_profit: '男', project_locations: '男', opening_date: '男', dismantling_date: '男', sponsor: '男', organizer: '男', project_category: '男'
+        , allow_deletion_modification: '男', allow_search: '男', number: '男',creation_time: '男', creator: '男', Modifier: '男',update_time: '男', operate: '男'}],
+      //列名List
+      titleList: [ // 这里是静态数据的数组
+        { id: 1, label: '项目简称',value:'project_abbreviation'},
+        { id: 2, label: '所有者',value:'owner'},
+        { id: 3, label: '业务员',value:'salesman'},
+        { id: 4, label: '项目全称',value:'project_full_name'},
+        { id: 5, label: '所在城市',value:'city'},
+        { id: 6, label: '布展开始日期',value:'exhibition_start_date'},
+        { id: 7, label: '布展结束日期',value:'exhibition_end_date'},
+        { id: 8, label: '合同金额',value:'contract_amount'},
+
+
+        { id: 9, label: '未付金额',value:'unpaid_amount'},
+        { id: 10, label: '到款金额',value:'received_amount'},
+        { id: 11, label: '公司',value:'company'},
+        { id: 12, label: '展台面积1',value:'booth_area1'},
+        { id: 13, label: '合同金额1',value:'contract_amount1'},
+        { id: 14, label: '单数',value:'orders_number'},
+        { id: 15, label: '单数1',value:'orders_number1'},
+        { id: 16, label: '成本总额',value:'total_cost'},
+
+        { id: 17, label: '毛利润',value:'gross_profit'},
+        { id: 18, label: '项目地点',value:'project_locations'},
+        { id: 19, label: '开幕日期',value:'opening_date'},
+        { id: 20, label: '撤展日期',value:'dismantling_date'},
+        { id: 21, label: '主办单位',value:'sponsor'},
+        { id: 22, label: '承办单位',value:'organizer'},
+
+        { id: 23, label: '项目类别',value:'project_category'},
+        { id: 24, label: '允许删改',value:'allow_deletion_modification'},
+        { id: 25, label: '允许查找',value:'allow_search'},
+        { id: 26, label: '编号',value:'number'},
+        { id: 27, label: '创建时间',value:'creation_time'},
+        { id: 28, label: '创建者',value:'creator'},
+        { id: 29, label: '修改者',value:'Modifier'},
+        { id: 30, label: '更新时间',value:'update_time'},
+        { id: 31, label: '操作',value:'operate'}
+      ]
+      //
+      // tableColumns:['公司模块查询','申请日期' ,'申请人','申请-开票类型','申请-发票抬头','申请-单位地址','申请-税号','申请-电话号码','申请-开户银行'
+      //   '申请-银行账号', '申请-发票金额','开票类型','发票抬头','开票单位','开票金额¥','开票金额$','发票号码(起)','发票号码(讫)','发票张数','快递单号',
+        //   '收件人','参展单位', '搭建单位','收费总额','已收款项','已开金额','展商模块查询','所有者','编号','创建时间','创建者','操作']
+    };
+  },
+  data2() {
+    return {
+
+      titleList2: [ // 这里是静态数据的数组
+        { id: 1, label: '项目简称',value:'project_abbreviation'},
+        { id: 2, label: '所有者',value:'owner' },
+        { id: 3, label: '业务员',value:'salesman'},
+        { id: 4, label: '项目全称',value:'project_full_name'},
+        { id: 5, label: '所在城市',value:'city'},
+        { id: 6, label: '布展开始日期',value:'exhibition_start_date'},
+        { id: 7, label: '布展结束日期',value:'exhibition_end_date'},
+        { id: 8, label: '合同金额',value:'contract_amount'},
+
+
+
+
+        { id: 9, label: '未付金额',value:'unpaid_amount'},
+        { id: 10, label: '到款金额',value:'received_amount'},
+        { id: 11, label: '公司',value:'company'},
+        { id: 12, label: '展台面积1',value:'booth_area1'},
+        { id: 13, label: '合同金额1',value:'contract_amount1'},
+        { id: 14, label: '单数',value:'orders_number'},
+        { id: 15, label: '单数1',value:'orders_number1'},
+        { id: 16, label: '成本总额',value:'total_cost'},
+
+
+        { id: 17, label: '毛利润',value:'gross_profit'},
+        { id: 18, label: '项目地点',value:'project_locations'},
+        { id: 19, label: '开幕日期',value:'opening_date'},
+        { id: 20, label: '撤展日期',value:'dismantling_date'},
+        { id: 21, label: '主办单位',value:'sponsor'},
+        { id: 22, label: '承办单位',value:'organizer'},
+
+
+        { id: 23, label: '项目类别',value:'project_category'},
+        { id: 24, label: '允许删改',value:'allow_deletion_modification'},
+        { id: 25, label: '允许查找',value:'allow_search'},
+        { id: 26, label: '编号',value:'number'},
+        { id: 27, label: '创建时间',value:'creation_time'},
+        { id: 28, label: '创建者',value:'creator'},
+        { id: 29, label: '修改者',value:'Modifier'},
+        { id: 30, label: '更新时间',value:'update_time'},
+        { id: 31, label: '操作',value:'operate'}
+      ]
+    };
+  }
+
+}
+</script>
+<style scoped>
+.table-container {
+  overflow-y: scroll; /* 创建垂直滚动条 */
+  max-height: 400px; /* 根据需求设定最大高度 */
+}
+</style>
